@@ -1,13 +1,14 @@
-function visProfil() {
-  const data = JSON.parse(localStorage.getItem('bruker')) || {};
-  document.getElementById('profil-navn').textContent = data.fornavn + " " + data.etternavn;
-  document.getElementById('profil-epost').textContent = data.epost || '';
-  document.getElementById('profil-telefon').textContent = data.telefon || '';
-  document.getElementById('profil-vervet').textContent = data.vervet || '';
-  document.getElementById('profil-kontonr').textContent = data.kontonr || '';
-  document.getElementById('profil-registrert').textContent = data.registrert || '';
+function hentProfil() {
+  const bruker = JSON.parse(localStorage.getItem("brukerdata"));
+  if (!bruker) return;
+  document.getElementById("profil-navn").textContent = bruker.fornavn + " " + bruker.etternavn;
+  document.getElementById("profil-epost").textContent = bruker.epost || "-";
+  document.getElementById("profil-telefon").textContent = bruker.telefon || "-";
+  document.getElementById("profil-vervet").textContent = bruker.vervet || "-";
+  document.getElementById("profil-konto").textContent = bruker.kontonummer || "-";
+  document.getElementById("profil-dato").textContent = bruker.dato || "-";
 }
-function åpneInnstillinger() {
-  alert("Innstillinger kommer senere!");
+function loggUt() {
+  alert("Denne funksjonen er ikke aktiv ennå.");
 }
-document.addEventListener("DOMContentLoaded", visProfil);
+document.addEventListener("DOMContentLoaded", hentProfil);
