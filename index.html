@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>AI Innovate – App V3.12</title>
-  <link rel="stylesheet" href="aurora.css" />
-  <link rel="stylesheet" href="profil.css" />
-  <link rel="stylesheet" href="rekruttering.css" />
-  <link rel="stylesheet" href="kunst.css" />
-  <link rel="stylesheet" href="jobb.css" />
-  <link rel="stylesheet" href="registrering.css" />
+  <link rel="stylesheet" href="profil.css">
 </head>
-<body style="margin:0; background:#000; color:#fff; font-family:sans-serif;">
-  <div id="app" style="padding-bottom: 100px;"></div>
-  <div id="app-bottom-menu" style="position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0f0f1a; border-top: 1px solid #222; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 -2px 10px rgba(0,255,225,0.1); z-index: 1000;">
-    <a href="#registrering" onclick="visModul('modul-registrering')" style="color: #00ffe1; text-decoration: none;">📝 Registrering</a>
-    <a href="#profil" onclick="visModul('modul-profil')" style="color: #00ffe1; text-decoration: none;">👤 Profil</a>
-    <a href="#rekruttering" onclick="visModul('modul-rekruttering')" style="color: #00ffe1; text-decoration: none;">🔗 Rekruttering</a>
-    <a href="#kunst" onclick="visModul('modul-kunst')" style="color: #00ffe1; text-decoration: none;">🎨 Kunst</a>
-    <a href="#jobb" onclick="visModul('modul-jobb')" style="color: #00ffe1; text-decoration: none;">💼 Jobb</a>
-    <a href="#aurora" onclick="visModul('modul-aurora')" style="color: #00ffe1; text-decoration: none;">🤖 Aurora</a>
+<body style="margin:0; background:#000; color:#fff;">
+  <div id="app" style="padding-bottom:100px;"></div>
+
+  <div id="app-bottom-menu" style="position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0f0f1a; display: flex; justify-content: space-around; align-items: center;">
+    <a href="#profil" onclick="visModul('modul-profil')" style="color: #00ffe1;">👤 Profil</a>
   </div>
-  <script src="aurora.js"></script>
+
   <script src="profil.js"></script>
-  <script src="rekruttering.js"></script>
-  <script src="kunst.js"></script>
-  <script src="jobb.js"></script>
   <script src="registrering.js"></script>
   <script>
     function visModul(modulnavn) {
@@ -33,12 +20,10 @@
         .then(res => res.text())
         .then(html => {
           document.getElementById('app').innerHTML = html;
-        })
-        .catch(() => {
-          document.getElementById('app').innerHTML = '<div style="padding: 40px; text-align: center;">🚧 Modulen <strong>' + modulnavn + '</strong> er ikke klar ennå.</div>';
+          if (modulnavn === 'modul-profil') visProfil();
         });
     }
-    visModul('modul-registrering');
+    visModul('modul-profil');
   </script>
 </body>
 </html>
