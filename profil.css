@@ -1,24 +1,21 @@
-.profil-container {
-  max-width: 500px;
+.modul.profil {
+  max-width: 600px;
   margin: 40px auto;
-  background: #111122;
   padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  background: #1a1a2e;
+  border-radius: 12px;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 20px rgba(0,255,225,0.1);
 }
-.profil-container h2 {
-  color: #00ffe1;
-  margin-bottom: 20px;
-}
-.profil-container p {
-  margin: 10px 0;
-}
-button {
+.modul.profil button {
+  margin-top: 20px;
   background: #00ffe1;
+  color: #000;
+  padding: 12px;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 20px;
+  border-radius: 8px;
+  width: 100%;
 }
