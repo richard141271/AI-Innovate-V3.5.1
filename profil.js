@@ -1,21 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const bruker = JSON.parse(localStorage.getItem("registrertBruker"));
-  if (bruker) {
-    document.getElementById("navn").textContent = bruker.fornavn + " " + bruker.etternavn;
-    document.getElementById("epost").textContent = bruker.epost;
-    document.getElementById("telefon").textContent = bruker.telefon || "-";
-    document.getElementById("vervetAv").textContent = bruker.vervetAv || "-";
-    document.getElementById("kontonummer").textContent = bruker.kontonummer || "-";
-    document.getElementById("registrert").textContent = bruker.registrert;
-  } else {
-    document.getElementById("profilData").innerHTML = "<p>Ingen brukerdata funnet. Gå til registrering først.</p>";
-  }
-});
-
-function loggUt() {
-  if (confirm("Er du sikker på at du vil logge ut og slette profilen din?")) {
-    localStorage.removeItem("registrertBruker");
-    window.location.hash = "#registrering";
-    visModul("modul-registrering");
-  }
+function hentProfil() {
+  const bruker = JSON.parse(localStorage.getItem("brukerdata"));
+  if (!bruker) return;
+  document.getElementById("profil-navn").textContent = bruker.fornavn + " " + bruker.etternavn;
+  document.getElementById("profil-epost").textContent = bruker.epost || "-";
+  document.getElementById("profil-telefon").textContent = bruker.telefon || "-";
+  document.getElementById("profil-vervet").textContent = bruker.vervet || "-";
+  document.getElementById("profil-konto").textContent = bruker.kontonummer || "-";
+  document.getElementById("profil-dato").textContent = bruker.dato || "-";
 }
+function loggUt() {
+  alert("Denne funksjonen er ikke aktiv ennå.");
+}
+document.addEventListener("DOMContentLoaded", hentProfil);
