@@ -1,3 +1,4 @@
+
 function visProfil() {
   const data = JSON.parse(localStorage.getItem("registrertBruker"));
   const container = document.getElementById("profilinfo");
@@ -12,7 +13,7 @@ function visProfil() {
     <p><strong>E-post:</strong> ${data.epost}</p>
     <p><strong>Telefon:</strong> ${data.telefon || 'Ikke oppgitt'}</p>
     <p><strong>Vervet av:</strong> ${data.verv || 'Ingen'}</p>
-    <p><strong>Kontonummer:</strong> ${data.konto || 'Ikke oppgitt'}</p>
     <p><strong>Registrert:</strong> ${data.registrert}</p>
   `;
 }
+window.onload = visProfil;
