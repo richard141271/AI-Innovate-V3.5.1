@@ -1,4 +1,3 @@
-
 function visProfil() {
   const data = JSON.parse(localStorage.getItem("registrertBruker"));
   const container = document.getElementById("profilinfo");
@@ -16,4 +15,11 @@ function visProfil() {
     <p><strong>Registrert:</strong> ${data.registrert}</p>
   `;
 }
+
+function visModul(modulnavn) {
+  document.querySelectorAll(".skjerm").forEach(el => el.classList.remove("vis"));
+  document.getElementById(modulnavn).classList.add("vis");
+  if (modulnavn === "profil") visProfil();
+}
+
 window.onload = visProfil;
