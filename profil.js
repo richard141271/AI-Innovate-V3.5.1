@@ -1,4 +1,3 @@
-
 function visProfil() {
   const data = JSON.parse(localStorage.getItem("registrertBruker"));
   const container = document.getElementById("profilinfo");
@@ -17,5 +16,3 @@ function visProfil() {
     <p><strong>Registrert:</strong> ${data.registrert}</p>
   `;
 }
-
-window.onload = visProfil;
