@@ -1,14 +1,21 @@
-function hentProfil() {
-  const bruker = JSON.parse(localStorage.getItem("brukerdata"));
-  if (!bruker) return;
-  document.getElementById("profil-navn").textContent = bruker.fornavn + " " + bruker.etternavn;
-  document.getElementById("profil-epost").textContent = bruker.epost || "-";
-  document.getElementById("profil-telefon").textContent = bruker.telefon || "-";
-  document.getElementById("profil-vervet").textContent = bruker.vervet || "-";
-  document.getElementById("profil-konto").textContent = bruker.kontonummer || "-";
-  document.getElementById("profil-dato").textContent = bruker.dato || "-";
+
+function visProfil() {
+  const data = JSON.parse(localStorage.getItem("registrertBruker"));
+  const container = document.getElementById("profilinfo");
+
+  if (!data) {
+    container.innerHTML = "<p>Ingen brukerdata funnet. Vennligst registrer deg først.</p>";
+    return;
+  }
+
+  container.innerHTML = `
+    <p><strong>Navn:</strong> ${data.fornavn} ${data.etternavn}</p>
+    <p><strong>E-post:</strong> ${data.epost}</p>
+    <p><strong>Telefon:</strong> ${data.telefon || 'Ikke oppgitt'}</p>
+    <p><strong>Vervet av:</strong> ${data.verv || 'Ingen'}</p>
+    <p><strong>Kontonummer:</strong> ${data.konto || 'Ikke oppgitt'}</p>
+    <p><strong>Registrert:</strong> ${data.registrert}</p>
+  `;
 }
-function loggUt() {
-  alert("Denne funksjonen er ikke aktiv ennå.");
-}
-document.addEventListener("DOMContentLoaded", hentProfil);
+
+window.onload = visProfil;
