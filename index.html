@@ -1,47 +1,28 @@
-<link rel="manifest" href="manifest.json">
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js');
-    });
-  }
-</script>
 
 <!DOCTYPE html>
 <html lang="no">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Innovate – App V3.6</title>
-  <link rel="stylesheet" href="registrering.css" />
-  <script src="registrering.js" defer></script>
-</head>
-<body style="margin:0; background:#000; color:#fff; font-family:sans-serif;">
-  <div id="app" style="padding-bottom: 100px;"></div>
-
-  <!-- HURTIGTILGANG FRA APP-MENYEN -->
-  <div id="app-bottom-menu" style="position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0f0f1a; border-top: 1px solid #222; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 -2px 10px rgba(0,255,225,0.1); z-index: 1000;">
-    <a href="#registrering" onclick="visModul('modul-registrering')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">📝 Registrering</a>
-    <a href="#profil" onclick="visModul('modul-profil')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">👤 Profil</a>
-    <a href="#rekruttering" onclick="visModul('modul-rekruttering')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">🔗 Rekruttering</a>
-    <a href="#kunst" onclick="visModul('modul-kunst')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">🎨 Kunst</a>
-    <a href="#jobb" onclick="visModul('modul-jobb')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">💼 Jobb</a>
-    <a href="#aurora" onclick="visModul('modul-aurora')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">🤖 Aurora</a>
-  </div>
-
+  <title>AI Innovate – Supabase test</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
-    function visModul(modulnavn) {
-      fetch(modulnavn + '.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('app').innerHTML = html;
-        })
-        .catch(() => {
-          document.getElementById('app').innerHTML = '<div style="padding: 40px; text-align: center;">🚧 Modulen <strong>' + modulnavn + '</strong> er ikke klar ennå.</div>';
-        });
-    }
-
-    visModul('modul-registrering');
+    const supabaseUrl = 'https://sjsrtfydsvxwragamuvf.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNqc3J0Znlkc3Z4d3JhZ2FtdXZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgyMTYwMjQsImV4cCI6MjA2Mzc5MjAyNH0.C03IFs5FZNvDUtOKo31jxaei-6ZWJWH3GqFvp38AsO8';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
   </script>
+  <script defer src="registrering.js"></script>
+</head>
+<body>
+  <h1>Registrering</h1>
+  <form id="regForm">
+    <input type="text" placeholder="Fornavn" id="fornavn" required /><br/>
+    <input type="text" placeholder="Etternavn" id="etternavn" required /><br/>
+    <input type="email" placeholder="E-post" id="epost" required /><br/>
+    <input type="text" placeholder="Telefon" id="telefon" /><br/>
+    <input type="text" placeholder="Hvem vervet deg?" id="vervet" /><br/>
+    <button type="submit">Registrer</button>
+  </form>
 </body>
 </html>
