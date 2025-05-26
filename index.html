@@ -1,1 +1,45 @@
-<!-- index.html content goes here -->
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Innovate Stabil</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+    const supabaseUrl = 'https://sjsrtfydsvxwragamuvf.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    function visModul(modulnavn) {
+      fetch(modulnavn + '.html')
+        .then(res => {
+          if (!res.ok) throw new Error("Modul ikke funnet");
+          return res.text();
+        })
+        .then(html => {
+          document.getElementById("app").innerHTML = html;
+        })
+        .catch(err => {
+          fetch('modul-feil.html')
+            .then(fallback => fallback.text())
+            .then(html => document.getElementById("app").innerHTML = html);
+        });
+    }
+
+    window.addEventListener("hashchange", () => {
+      const modul = location.hash.replace("#", "") || "registrering-supabase";
+      visModul(modul);
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const modul = location.hash.replace("#", "") || "registrering-supabase";
+      visModul(modul);
+    });
+  </script>
+</head>
+<body>
+  <div id="app">Laster...</div>
+</body>
+</html>
