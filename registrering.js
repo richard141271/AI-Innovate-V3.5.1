@@ -1,39 +1,27 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const skjema = document.getElementById("registreringsSkjema");
+  if (skjema) {
+    skjema.addEventListener("submit", e => {
+      e.preventDefault();
+      const pass1 = document.getElementById("passord").value;
+      const pass2 = document.getElementById("gjentaPassord").value;
+      if (pass1 !== pass2) {
+        document.getElementById("registreringMelding").textContent = "Passordene matcher ikke.";
+        return;
+      }
 
-import { createClient } from 'https://esm.sh/@supabase/supabase-js'
-
-const supabase = createClient('https://sjsrtfydsvxwragamuvf.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNqc3J0Znlkc3Z4d3JhZ2FtdXZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgyMTYwMjQsImV4cCI6MjA2Mzc5MjAyNH0.C03IFs5FZNvDUtOKo31jxaei-6ZWJWH3GqFvp38AsO8');
-
-window.registrer = async function(e) {
-  e.preventDefault();
-  const fornavn = document.getElementById('fornavn').value;
-  const etternavn = document.getElementById('etternavn').value;
-  const epost = document.getElementById('epost').value;
-  const telefon = document.getElementById('telefon').value;
-  const vervetAv = document.getElementById('verver').value;
-  const kontonummer = document.getElementById('konto').value;
-  const passord = document.getElementById('passord').value;
-  const gjenta = document.getElementById('gjenta').value;
-
-  if (passord !== gjenta) {
-    alert('Passordene matcher ikke!');
-    return;
+      const bruker = {
+        fornavn: document.getElementById("fornavn").value,
+        etternavn: document.getElementById("etternavn").value,
+        epost: document.getElementById("epost").value,
+        telefon: document.getElementById("telefon").value,
+        vervetAv: document.getElementById("vervetAv").value,
+        kontonummer: document.getElementById("kontonummer").value,
+        registrert: new Date().toLocaleString()
+      };
+      localStorage.setItem("registrertBruker", JSON.stringify(bruker));
+      window.location.hash = "#profil";
+      visModul('modul-profil');
+    });
   }
-
-  const { error } = await supabase.from('brukere').insert([{
-    fornavn, etternavn, epost, telefon, vervetAv, kontonummer, passord
-  }]);
-
-  if (error) {
-    alert('Feil ved lagring: ' + error.message);
-    return;
-  }
-
-  localStorage.setItem('fornavn', fornavn);
-  localStorage.setItem('etternavn', etternavn);
-  localStorage.setItem('epost', epost);
-  localStorage.setItem('telefon', telefon);
-  localStorage.setItem('verver', vervetAv);
-  localStorage.setItem('konto', kontonummer);
-
-  window.location.href = 'profil.html';
-}
+});
