@@ -1,19 +1,35 @@
-<div class="modul registrering">
-  <h2>📝 Registrering</h2>
-  <form id="registreringsSkjema">
-    <input type="text" id="fornavn" placeholder="Fornavn" required />
-    <input type="text" id="etternavn" placeholder="Etternavn" required />
-    <input type="email" id="epost" placeholder="E-post" required />
-    <input type="tel" id="telefon" placeholder="Telefon (valgfritt)" />
-    <input type="text" id="vervetAv" placeholder="Hvem vervet deg?" />
-    <input type="text" id="kontonummer" placeholder="Kontonummer (valgfritt)" />
-    <input type="password" id="passord" placeholder="Passord" required />
-    <input type="password" id="gjentaPassord" placeholder="Gjenta passord" required />
-    <label style="display:block;margin-top:10px;">
-      <input type="checkbox" id="godtaVilkår" required />
-      Jeg godtar <a href="#vilkar" onclick="visModul('modul-vilkar'); return false;">vilkårene</a>.
-    </label>
-    <button type="submit">Registrer meg</button>
-    <p id="registreringMelding"></p>
-  </form>
-</div>
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrering</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="registrering.js" defer></script>
+</head>
+<body>
+  <div class="profile-card">
+    <h2>📝 Registrering</h2>
+    <form onsubmit="registrer(event)">
+      <input type="text" id="fornavn" placeholder="Fornavn" required>
+      <input type="text" id="etternavn" placeholder="Etternavn" required>
+      <input type="email" id="epost" placeholder="E-post" required>
+      <input type="text" id="telefon" placeholder="Telefon (valgfritt)">
+      <input type="text" id="verver" placeholder="Hvem vervet deg?">
+      <input type="text" id="konto" placeholder="Kontonummer (valgfritt)">
+      <input type="password" placeholder="Passord" required>
+      <input type="password" placeholder="Gjenta passord" required>
+      <label><input type="checkbox" required> Jeg godtar <a href="#">vilkårene</a>.</label>
+      <button type="submit">Registrer meg</button>
+    </form>
+  </div>
+  <div class="menu-toggle">
+    <button onclick="toggleMeny()">🧭 Mer</button>
+    <div id="meny" style="display:none;">
+      <a href="modul-profil.html">👤 Profil</a>
+      <a href="modul-kunst.html">🎨 Kunst</a>
+      <a href="modul-aksjer.html">📈 Aksjer</a>
+    </div>
+  </div>
+</body>
+</html>
