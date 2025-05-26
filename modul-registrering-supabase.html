@@ -1,1 +1,18 @@
-<!-- modul-registrering-supabase.html content goes here -->
+
+<link rel="stylesheet" href="registrering.css" />
+<div class="profile-card">
+  <h2>📝 Registrering</h2>
+  <form id="registrerForm">
+    <input type="text" name="fornavn" placeholder="Fornavn" required>
+    <input type="text" name="etternavn" placeholder="Etternavn" required>
+    <input type="email" name="epost" placeholder="E-post" required>
+    <input type="text" name="telefon" placeholder="Telefon">
+    <input type="text" name="vervet_av" placeholder="Hvem vervet deg?">
+    <input type="text" name="kontonummer" placeholder="Kontonummer">
+    <input type="password" name="passord" placeholder="Passord" required>
+    <input type="password" name="gjenta_passord" placeholder="Gjenta passord" required>
+    <label><input type="checkbox" required> Jeg godtar <a href="#">vilkårene</a>.</label>
+    <button type="submit">Registrer</button>
+  </form>
+</div>
+<script src="registrering-supabase.js"></script>
